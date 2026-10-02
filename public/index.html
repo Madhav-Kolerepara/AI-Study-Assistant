@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI - AI Study Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🎓 StudyAI
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#study">Study</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO SECTION ================= -->
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            ✨ AI-Powered Learning
+        </div>
+
+        <h1>
+            Your Personal
+            <span>AI Study Tutor</span>
+        </h1>
+
+        <p>
+            Learn difficult concepts, generate study notes,
+            practice with quizzes, explain your code,
+            and clear your doubts with AI.
+        </p>
+
+        <button
+            class="primary-button"
+            onclick="document.getElementById('study').scrollIntoView({behavior: 'smooth'})">
+
+            Start Learning →
+
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features" id="features">
+
+        <h2>What can you do?</h2>
+
+        <p class="section-description">
+            One simple workspace for your everyday learning.
+        </p>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>Explain Topics</h3>
+
+                <p>
+                    Understand difficult concepts using
+                    simple and structured explanations.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📝
+                </div>
+
+                <h3>Generate Notes</h3>
+
+                <p>
+                    Create short, easy-to-revise study notes
+                    from any topic.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <h3>AI Quiz</h3>
+
+                <p>
+                    Test your knowledge with automatically
+                    generated questions.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    💻
+                </div>
+
+                <h3>Explain Code</h3>
+
+                <p>
+                    Paste your program and understand
+                    the logic step by step.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤔
+                </div>
+
+                <h3>Clear Doubts</h3>
+
+                <p>
+                    Ask follow-up questions based on
+                    the explanation you received.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔍
+                </div>
+
+                <h3>Prompt Engineering</h3>
+
+                <p>
+                    Compare different prompts and understand
+                    how prompt design affects AI responses.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STUDY ASSISTANT ================= -->
+
+    <section class="study-section" id="study">
+
+        <div class="study-container">
+
+            <div class="study-heading">
+
+                <div class="hero-badge">
+                    🚀 Study Workspace
+                </div>
+
+                <h2>
+                    Start Your Learning Session
+                </h2>
+
+                <p>
+                    Tell the AI what you want to learn.
+                </p>
+
+            </div>
+            <button
+    class="new-session-button"
+    onclick="newStudySession()">
+
+    🔄 New Study Session
+
+</button>
+<div class="history-section">
+
+    <h2>📚 Study History</h2>
+
+    <p class="history-description">
+        Your recent learning sessions are saved on this device.
+    </p>
+
+    <div id="studyHistory">
+
+        <p class="empty-history">
+            No study sessions yet.
+        </p>
+
+    </div>
+
+</div>
+
+
+            <!-- TOPIC -->
+
+            <label>
+                Enter Topic
+            </label>
+
+            <input
+                type="text"
+                id="topic"
+                placeholder="Example: Binary Search"
+            >
+
+
+            <!-- DIFFICULTY -->
+
+            <label>
+                Difficulty
+            </label>
+
+            <select id="difficulty">
+
+                <option value="Beginner">
+                    Beginner
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="Advanced">
+                    Advanced
+                </option>
+
+            </select>
+
+
+            <!-- TASK -->
+
+            <label>
+                Choose Task
+            </label>
+
+            <select id="task">
+
+                <option value="explain">
+                    Explain Topic
+                </option>
+
+                <option value="notes">
+                    Generate Notes
+                </option>
+
+                <option value="quiz">
+                    Generate Quiz
+                </option>
+
+                <option value="code">
+                    Explain Code
+                </option>
+
+            </select>
+
+
+            <!-- PROMPT STYLE -->
+
+            <label>
+                Prompt Style
+            </label>
+
+            <select id="promptStyle">
+
+                <option value="basic">
+                    Basic Prompt
+                </option>
+
+                <option value="structured">
+                    Structured Prompt
+                </option>
+
+                <option value="expert">
+                    Expert Prompt
+                </option>
+
+            </select>
+
+
+            <!-- CODE INPUT -->
+
+            <div
+                id="codeSection"
+                style="display: none;">
+
+                <label>
+                    Enter Your Code
+                </label>
+
+                <textarea
+                    id="code"
+                    rows="10"
+                    placeholder="Paste your code here..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+                class="generate-button"
+                onclick="generateAnswer()">
+
+                ✨ Generate Answer
+
+            </button>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loading"
+                class="loading">
+
+                Thinking...
+
+            </div>
+
+
+            <!-- PROMPT PREVIEW -->
+
+            <div class="output-card">
+
+                <h2>
+                    🔍 Prompt Preview
+                </h2>
+
+                <pre id="promptPreview">
+Your generated prompt will appear here.
+                </pre>
+
+            </div>
+
+
+            <!-- AI RESPONSE -->
+
+            <div class="output-card">
+
+                <h2>
+                    🤖 AI Response
+                </h2>
+
+                <div id="answer">
+
+                    Your answer will appear here.
+
+                </div>
+
+            </div>
+
+
+            <!-- DOUBT SECTION -->
+
+            <!-- ================= AI TUTOR CHAT ================= -->
+
+<div class="chat-section">
+
+    <h2>🤔 Ask Your Doubt</h2>
+
+    <p>
+        Continue learning by asking the AI tutor
+        anything you don't understand.
+    </p>
+
+
+    <!-- CHAT MESSAGES -->
+
+    <div id="chatMessages" class="chat-messages">
+
+        <div class="ai-message">
+
+            <div class="message-name">
+                🤖 AI Tutor
+            </div>
+
+            <div class="message-text">
+                Hi! Generate an explanation first,
+                then ask me anything about the topic.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DOUBT INPUT -->
+
+    <div class="chat-input-area">
+
+        <textarea
+            id="doubt"
+            rows="3"
+            placeholder="Type your doubt here..."
+        ></textarea>
+
+        <button
+            class="generate-button"
+            onclick="clarifyDoubt()">
+
+            Send Doubt ➤
+
+        </button>
+
+    </div>
+
+</div>
+
+            <!-- PROMPT ANALYSIS -->
+
+            <div class="output-card">
+
+                <h2>
+                    🧠 Prompt Engineering Analysis
+                </h2>
+
+                <p id="promptAnalysis">
+
+                    Select a prompt style and generate
+                    an answer to see the analysis.
+
+                </p>
+
+            </div>
+
+
+            <!-- COMPARE -->
+
+            <div class="comparison">
+
+                <h2>
+                    🔬 Prompt Comparison
+                </h2>
+
+                <button
+                    class="secondary-button"
+                    onclick="comparePrompts()">
+
+                    Compare Prompts
+
+                </button>
+
+                <div id="comparisonResult">
+
+                    Click "Compare Prompts" to compare
+                    Basic, Structured, and Expert prompts.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>
+            🎓 StudyAI
+        </h3>
+
+        <p>
+            AI-powered learning and prompt engineering assistant.
+        </p>
+
+        <p class="footer-small">
+            Built with Node.js, JavaScript and Ollama.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
